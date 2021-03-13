@@ -16,7 +16,6 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     if (newTaskTitle === '') {
-      window.alert('Digite o título da tarefa.');
       return;
     }
 
@@ -39,7 +38,12 @@ export function TaskList() {
   }
 
   function handleRemoveTask(id: number) {
-    // Remova uma task da listagem pelo ID
+    const taskIndex = tasks.findIndex(task => task.id === id);
+
+    const updatedTasks = [...tasks];
+    updatedTasks.splice(taskIndex, 1);
+
+    setTasks(updatedTasks);
   }
 
   return (
